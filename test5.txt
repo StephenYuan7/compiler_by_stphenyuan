@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+int main(int argc, char const *argv[])
+{
+    pid_t child;
+    int a = 10;
+    child = fork();
+    if(!child){
+        a++;
+        printf("In child process, a is %d\n", a);
+    } else {
+        /* code */
+        wait(NULL);
+        printf("In father process, a is %d\n", a);
+    }
+    
+    
+    return 0;
+}

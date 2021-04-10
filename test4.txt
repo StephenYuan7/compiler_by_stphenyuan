@@ -1,0 +1,79 @@
+#define _GNU_SOURCE
+#include <sched.h>
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <malloc.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <string.h>
+#include <fcntl.h>
+
+int param = 0;
+int fd;
+int thread_fn1(void *data)
+{
+    chdir("/home/wmc");
+    char buff[1024];
+    getcwd(buff, sizeof(buff));
+    printf("In child process cwd is %s\n", buff);
+}
+int thread_fn2(void *data)
+{
+    param++;
+    printf("In child process param is %d\n", param);
+    return 0;
+}
+int thread_fn3(void *data)
+{
+    char buff[100];
+    memset(buff, 0, sizeof(buff));
+    lseek(fd, 0, SEEK_SET);
+    int n;
+    printf("In child process, file content is \n");
+    while ((n = read(fd, buff, sizeof(buff))) > 0)
+    {
+        for(int i = 0; i < sizeof(buff); i++){
+            printf("%c", buff[i]);
+        }
+        memset(buff, 0, sizeof(buff));
+    }
+    char string[] = "child process test \n";
+    write(fd, string, sizeof(string));
+    return 0;
+}
+int main(int argc, char **argv)
+{
+    pid_t pid;
+    size_t stack_size = 10240;
+    void *stack = malloc(stack_size);
+    char buff[1024];
+    char string[] = "father process test \n";
+    fd = open("test.txt", O_RDWR | O_CREAT | O_TRUNC, 0655);
+    write(fd, string, sizeof(string));
+    pid = clone(thread_fn3, stack + stack_size, CLONE_FS, 0);
+
+    
+    if(pid < 0){
+        exit(EXIT_FAILURE);
+    } else {
+        sleep(1);
+        char buff[100];
+        memset(buff, 0, sizeof(buff));
+        lseek(fd, 0, SEEK_SET);
+        int n;
+        printf("After clone, file content is \n");
+        while ((n = read(fd, buff, sizeof(buff))) > 0)
+        {
+            // printf("%s\n", buff);
+            for(int i = 0; i < sizeof(buff); i++){
+                printf("%c", buff[i]);
+            }
+            memset(buff, 0, sizeof(buff));
+        }
+        
+    }
+    close(fd);
+    exit(EXIT_SUCCESS);
+}
