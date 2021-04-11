@@ -6,6 +6,10 @@
 
 int skip_space(char buffer[], int char_count);//跳过空格和制表符
 int judge_first_case0(char x);//判断第一个字符以转到后续状态
+int letter(char x);//判断是否为字符
+int digit(char x);//判断是否为数字
+
+
 int main() {
 	//打开读取测试用例与结果保存文件
 	FILE* test, * file_result;
@@ -25,6 +29,7 @@ int main() {
 	int state = 0;
 	int lexemebegin = 0,forword = 0;//开始指针与向前指针
 	char strtoken[100];//暂存单词
+	int token_count = 0;//暂存区指针
 	char str_buffer[BUFFER_LEN];
 	strcpy(str_buffer, buffer);
 	do
@@ -37,7 +42,13 @@ int main() {
 			state = judge_first_case0(one_char);
 			break;
 		case 1:
-			
+			strtoken[token_count++] = one_char;
+			forword = lexemebegin++;
+			one_char = str_buffer[forword];
+			if ()
+			{
+
+			}
 		default:
 			break;
 		}
@@ -58,13 +69,13 @@ int skip_space(char buffer[], int char_count)
 int judge_first_case0(char x)
 {
 	int r;//返回值
-	if ((x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z'))
+	if (letter(x))
 	{
 		r = 1;
 	}
 	else
 	{
-		if (x >= '0' && x <= '9')
+		if (digit(x))
 		{
 			r = 2;
 		}
@@ -93,6 +104,26 @@ int judge_first_case0(char x)
 				break;
 			}
 		}
+	}
+	return r;
+}
+
+int letter(char x)
+{
+	int r = 0;
+	if ((x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z'))
+	{
+		r = 1;
+	}
+	return r;
+}
+
+int digit(char x)
+{
+	int r = 0;
+	if (x >= '0' && x <= '9')
+	{
+		r = 1;
 	}
 	return r;
 }
