@@ -1,9 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
+#include <string.h>
 
 #define BUFFER_LEN 2048
 
-int skip_space(char buffer[],int char_count);//跳过空格和制表符
+int skip_space(char buffer[], int char_count);//跳过空格和制表符
 int judge_first_case0(char x);//判断第一个字符以转到后续状态
 int main() {
 	//打开读取测试用例与结果保存文件
@@ -13,7 +14,7 @@ int main() {
 	file_result = fopen("compiler_result.txt", "w");
 	char one_char;
 	int char_count = 0;
-	while ((one_char=fgetc(test))!=EOF)
+	while ((one_char = fgetc(test)) != EOF)
 	{
 		buffer[char_count++] = one_char;
 	}
@@ -23,26 +24,28 @@ int main() {
 
 	int state = 0;
 	char_count = 0;
+	char str_buffer[BUFFER_LEN];
+	strcpy(str_buffer, buffer);
 	do
 	{
 		switch (state)
 		{
 		case 0:
 			char_count = skip_space(buffer, char_count);
-			one_char = buffer[char_count];
+			one_char = str_buffer[char_count];
 			state = judge_first_case0(one_char);
 			break;
 		default:
 			break;
 		}
-	} while (one_char!='\0');
+	} while (one_char != '\0');
 	return 0;
 }
 
 int skip_space(char buffer[], int char_count)
 {
 	int temp_count = char_count;
-	while (buffer[temp_count]==' ' || buffer[temp_count]=='\t')
+	while (buffer[temp_count] == ' ' || buffer[temp_count] == '\t')
 	{
 		temp_count++;
 	}
