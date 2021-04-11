@@ -23,7 +23,8 @@ int main() {
 	fprintf(file_result, "this is test.txt:\n%s", buffer);
 
 	int state = 0;
-	char_count = 0;
+	int lexemebegin = 0,forword = 0;//开始指针与向前指针
+	char strtoken[100];//暂存单词
 	char str_buffer[BUFFER_LEN];
 	strcpy(str_buffer, buffer);
 	do
@@ -31,10 +32,12 @@ int main() {
 		switch (state)
 		{
 		case 0:
-			char_count = skip_space(buffer, char_count);
-			one_char = str_buffer[char_count];
+			lexemebegin = skip_space(buffer, lexemebegin);
+			one_char = str_buffer[lexemebegin];
 			state = judge_first_case0(one_char);
 			break;
+		case 1:
+			
 		default:
 			break;
 		}
