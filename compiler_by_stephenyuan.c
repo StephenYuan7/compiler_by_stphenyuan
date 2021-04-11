@@ -1,13 +1,19 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<stdio.h>
+#include <stdio.h>
 #include <string.h>
 
 #define BUFFER_LEN 2048
+//关键字
+char keywords[32][32] = { "auto","break","case","char","const","continue",
+"default","do","double","else","enum","extern","float","for","goto",
+"if","int","long ","register","return","short","signed","static",
+"sizeof","struct","switch","typedef","unionunsigned","void","volatile","while "};
 
 int skip_space(char buffer[], int char_count);//跳过空格和制表符
 int judge_first_case0(char x);//判断第一个字符以转到后续状态
 int letter(char x);//判断是否为字符
 int digit(char x);//判断是否为数字
+int my_reserve(char buffer[]);//判断是否为保留字
 
 
 int main() {
@@ -38,18 +44,36 @@ int main() {
 		{
 		case 0:
 			lexemebegin = skip_space(buffer, lexemebegin);
+			forword = lexemebegin;
 			one_char = str_buffer[lexemebegin];
 			state = judge_first_case0(one_char);
 			break;
 		case 1:
 			strtoken[token_count++] = one_char;
-			forword = lexemebegin++;
+			forword ++;
 			one_char = str_buffer[forword];
-			if ()
+			if (digit(one_char)||letter(one_char))
 			{
-
+				state = 1;
 			}
+			else
+			{
+				strtoken[token_count] = '\0';//字符串加上终止符
+				token_count = 0;
+				forword--;
+				state = 0;
+				int iskey = my_reserve(strtoken);
+				if (iskey)//是关键字
+				{
+					lexemebegin = forword + 1;
+					printf("%s  %d\n", strtoken,iskey);
+				}
+				lexemebegin = forword + 1;
+			}
+			break;
 		default:
+			state = 0;
+			lexemebegin++;
 			break;
 		}
 	} while (one_char != '\0');
@@ -126,4 +150,15 @@ int digit(char x)
 		r = 1;
 	}
 	return r;
+}
+
+int my_reserve(char buffer[])
+{
+	for (int i = 0; i < 32; i++)
+	{
+		if (strcmp(keywords[i], buffer) == 0) {
+			return i + 1;     //若是保留字，则返回它的类别码 
+		}
+	}
+	return 0;
 }
