@@ -1,0 +1,433 @@
+this is test.txt:
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#include "5-6.h"
+#include "5-12.h"
+#include "5-1.h"
+#include "5-7.h"
+#include "5-8.h"
+#include "5-9.h"
+#include "5-10.h"
+#include "5-13.h"
+#include "5-14.h"
+#include "5-15.h"
+
+int main()
+{
+/* 1 */     int TableSize = 100;
+                int wordcount = 0, length;
+            HashTable H;
+            ElementType word;
+                FILE *fp;
+/* 2 */     char document[30] = "HarryPotter.txt";
+
+
+/* 3 */     H = InitializeTable( TableSize );
+
+/* 4 */     if(( fp = fopen(document, "r" )) == NULL)
+                FatalError("鏃犳硶鎵撳紑鏂囦欢锛乗n" );
+
+                while( !feof( fp ) ){
+/* 5 */        length = GetAWord( fp, word );
+/* 6 */        if(length > 3){     /* 鍙€冭檻闀垮害澶т簬3涓瓧绗︾殑鍗曡瘝 */
+/* 7 */          wordcount++;
+/* 8 */          InsertAndCount( word, H );
+                       }
+                }
+                fclose( fp );
+
+/* 9 */    printf("璇ユ枃妗ｅ叡鍑虹幇 %d 涓湁鏁堝崟璇?, wordcount);
+/* 10 */   Show( H, 10.0/100 );  /* 鏄剧ず璇嶉鍓?0%鐨勬墍鏈夊崟璇?*/
+/* 11 */   DestroyTable( H );    /* 閿€姣佹暎鍒楄〃 */
+                   return 0;
+}
+
+
+this is line 1:
+#  58
+include  80
+<  49
+stdio  81
+.  59
+h  82
+>  57
+
+
+this is line 2:
+#  58
+include  80
+<  49
+string  83
+.  59
+h  82
+>  57
+
+
+this is line 3:
+#  58
+include  80
+<  49
+stdlib  84
+.  59
+h  82
+>  57
+
+
+this is line 4:
+
+
+this is line 5:
+#  58
+include  80
+"5-6.h"  85
+
+
+this is line 6:
+#  58
+include  80
+"5-12.h"  86
+
+
+this is line 7:
+#  58
+include  80
+"5-1.h"  87
+
+
+this is line 8:
+#  58
+include  80
+"5-7.h"  88
+
+
+this is line 9:
+#  58
+include  80
+"5-8.h"  89
+
+
+this is line 10:
+#  58
+include  80
+"5-9.h"  90
+
+
+this is line 11:
+#  58
+include  80
+"5-10.h"  91
+
+
+this is line 12:
+#  58
+include  80
+"5-13.h"  92
+
+
+this is line 13:
+#  58
+include  80
+"5-14.h"  93
+
+
+this is line 14:
+#  58
+include  80
+"5-15.h"  94
+
+
+this is line 15:
+
+
+this is line 16:
+int  17
+main  95
+(  45
+)  46
+
+
+this is line 17:
+{  47
+
+
+this is line 18:
+annotation:  /* 1 */
+int  17
+TableSize  96
+=  40
+100  111
+;  44
+
+
+this is line 19:
+int  17
+wordcount  97
+=  40
+0  110
+,  53
+length  98
+;  44
+
+
+this is line 20:
+HashTable  99
+H  100
+;  44
+
+
+this is line 21:
+ElementType  101
+word  103
+;  44
+
+
+this is line 22:
+FILE  104
+*  42
+fp  105
+;  44
+
+
+this is line 23:
+annotation:  /* 2 */
+char  4
+document  106
+[  55
+30  112
+]  56
+=  40
+"HarryPotter.txt"  107
+;  44
+
+
+this is line 24:
+
+
+this is line 25:
+
+
+this is line 26:
+annotation:  /* 3 */
+H  100
+=  40
+InitializeTable  109
+(  45
+TableSize  96
+)  46
+;  44
+
+
+this is line 27:
+
+
+this is line 28:
+annotation:  /* 4 */
+if  16
+(  45
+(  45
+fp  105
+=  40
+fopen  0
+(  45
+document  106
+,  53
+"r"  0
+)  46
+)  46
+==  65
+NULL  0
+)  46
+
+
+this is line 29:
+FatalError  0
+(  45
+"鏃犳硶鎵撳紑鏂囦欢锛乗n"  0
+)  46
+;  44
+
+
+this is line 30:
+
+
+this is line 31:
+while  0
+(  45
+!  61
+feof  0
+(  45
+fp  105
+)  46
+)  46
+{  47
+
+
+this is line 32:
+annotation:  /* 5 */
+length  98
+=  40
+GetAWord  0
+(  45
+fp  105
+,  53
+word  103
+)  46
+;  44
+
+
+this is line 33:
+annotation:  /* 6 */
+if  16
+(  45
+length  98
+>  57
+3  113
+)  46
+{  47
+annotation:  /* 鍙€冭檻闀垮害澶т簬3涓瓧绗︾殑鍗曡瘝 */
+
+
+this is line 34:
+annotation:  /* 7 */
+wordcount  97
+++  66
+;  44
+
+
+this is line 35:
+annotation:  /* 8 */
+InsertAndCount  0
+(  45
+word  103
+,  53
+H  100
+)  46
+;  44
+
+
+this is line 36:
+}  48
+
+
+this is line 37:
+}  48
+
+
+this is line 38:
+fclose  0
+(  45
+fp  105
+)  46
+;  44
+
+
+this is line 39:
+
+
+this is line 40:
+annotation:  /* 9 */
+printf  0
+(  45
+"璇ユ枃妗ｅ叡鍑虹幇 %d 涓湁鏁堝崟璇?  0
+,  53
+wordcount  97
+)  46
+;  44
+
+
+this is line 41:
+annotation:  /* 10 */
+Show  0
+(  45
+H  100
+,  53
+10.0  160
+annotation:  100 );  /* 鏄剧ず璇嶉鍓?0%鐨勬墍鏈夊崟璇?*/
+
+
+this is line 42:
+annotation:  /* 11 */
+DestroyTable  0
+(  45
+H  100
+)  46
+;  44
+annotation:  /* 閿€姣佹暎鍒楄〃 */
+
+
+this is line 43:
+return  20
+0  110
+;  44
+
+
+this is line 44:
+}  48
+
+
+this is line 45:
+
+this is statistics:
+word   count
+
+
+char    1
+if    2
+int    3
+return    1
+=    6
+*    1
+;    15
+(    15
+)    14
+{    3
+}    3
+<    3
+,    6
+[    1
+]    1
+>    4
+#    13
+.    3
+!    1
+==    1
+++    1
+include    13
+stdio    1
+h    3
+string    1
+stdlib    1
+"5-6.h"    1
+"5-12.h"    1
+"5-1.h"    1
+"5-7.h"    1
+"5-8.h"    1
+"5-9.h"    1
+"5-10.h"    1
+"5-13.h"    1
+"5-14.h"    1
+"5-15.h"    1
+main    1
+TableSize    2
+wordcount    3
+length    3
+HashTable    1
+H    5
+ElementType    1
+word    3
+FILE    1
+fp    5
+document    2
+"HarryPotter.txt"    1
+Initialize?   1
+101    2
+100    1
+30    1
+3    1
+10.000000    1
+total:162
+C:\Users\25832\source\repos\compiler_by_stphenyuan\Debug\compiler_by_stphenyuan.exe (进程 19548)已退出，代码为 0。
+要在调试停止时自动关闭控制台，请启用“工具”->“选项”->“调试”->“调试停止时自动关闭控制台”。
+按任意键关闭此窗口. . .

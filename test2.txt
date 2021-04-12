@@ -15,15 +15,15 @@
 
 int main()
 {
-/* 1 */     int TableSize = 100; /* 散列表的估计大小，可以根据应用更改 */
+/* 1 */     int TableSize = 100; 
 	        int wordcount = 0, length;
             HashTable H;
             ElementType word;
 	        FILE *fp;
 /* 2 */     char document[30] = "HarryPotter.txt";
-                              /* 要被统计词频的文件名 */
+                             
 
-/* 3 */     H = InitializeTable( TableSize ); /* 建立散列表 */
+/* 3 */     H = InitializeTable( TableSize ); 
 
 /* 4 */     if(( fp = fopen(document, "r" )) == NULL)
                 FatalError("无法打开文件！\n" );

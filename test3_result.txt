@@ -1,0 +1,187 @@
+this is test.txt:
+#include <stdio.h>
+
+void Swap ( int x, int y )
+{
+        int temp;
+
+        temp=x;
+        x=y;
+        y=temp;
+}
+
+int main()
+{
+        int x=10, y=20;
+
+        Swap( x, y );
+        printf("x=%d, y=%d", x, y);
+
+        return 0;
+}
+
+
+this is line 1:
+#  58
+include  80
+<  49
+stdio  81
+.  59
+h  82
+>  57
+
+
+this is line 2:
+
+
+this is line 3:
+void  29
+Swap  83
+(  45
+int  17
+x  84
+,  53
+int  17
+y  85
+)  46
+
+
+this is line 4:
+{  47
+
+
+this is line 5:
+int  17
+temp  86
+;  44
+
+
+this is line 6:
+
+
+this is line 7:
+temp  86
+=  40
+x  84
+;  44
+
+
+this is line 8:
+x  84
+=  40
+y  85
+;  44
+
+
+this is line 9:
+y  85
+=  40
+temp  86
+;  44
+
+
+this is line 10:
+}  48
+
+
+this is line 11:
+
+
+this is line 12:
+int  17
+main  87
+(  45
+)  46
+
+
+this is line 13:
+{  47
+
+
+this is line 14:
+int  17
+x  84
+=  40
+10  111
+,  53
+y  85
+=  40
+20  112
+;  44
+
+
+this is line 15:
+
+
+this is line 16:
+Swap  83
+(  45
+x  84
+,  53
+y  85
+)  46
+;  44
+
+
+this is line 17:
+printf  88
+(  45
+"x=%d, y=%d"  89
+,  53
+x  84
+,  53
+y  85
+)  46
+;  44
+
+
+this is line 18:
+
+
+this is line 19:
+return  20
+0  110
+;  44
+
+
+this is line 20:
+}  48
+
+
+this is line 21:
+
+this is statistics:
+word   count
+
+
+int    5
+return    1
+void    1
+=    5
+;    8
+(    4
+)    4
+{    2
+}    2
+<    1
+,    5
+>    1
+#    1
+.    1
+include    1
+stdio    1
+h    1
+Swap    2
+x    6
+y    6
+temp    3
+main    1
+printf    1
+"x=%d, y=%d"    1
+0    1
+10    1
+20    1
+total:67
+C:\Users\25832\source\repos\compiler_by_stphenyuan\Debug\compiler_by_stphenyuan.exe (进程 20628)已退出，代码为 0。
+要在调试停止时自动关闭控制台，请启用“工具”->“选项”->“调试”->“调试停止时自动关闭控制台”。
+按任意键关闭此窗口. . .

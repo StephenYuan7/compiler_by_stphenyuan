@@ -1,17 +1,19 @@
+x = 1xhafkj
+double ppp = 1.20;
 #include <stdio.h>
 #include <time.h>
 #include <math.h>
 clock_t  start, stop;  /* clock_t */
 double  duration;      /* */
 #define MAXN 10        /*  */
-#define MAXK 1e7       /*  */
-
+//666
 double f( int n, double a[], double x );
 
 int main ()
 {	/*  */
 	int i;
 	double a[MAXN]; /*  */
+	double ppp = 1.30;
 	for ( i=0; i<MAXN; i++ ) a[i] = (double)i; 
 	/* f(x)a[] */
 

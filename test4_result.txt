@@ -1,0 +1,865 @@
+this is test.txt:
+#define _GNU_SOURCE
+#include <sched.h>
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <malloc.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <string.h>
+#include <fcntl.h>
+
+int param = 0;
+int fd;
+int thread_fn1(void *data)
+{
+    chdir("/home/wmc");
+    char buff[1024];
+    getcwd(buff, sizeof(buff));
+    printf("In child process cwd is %s\n", buff);
+}
+int thread_fn2(void *data)
+{
+    param++;
+    printf("In child process param is %d\n", param);
+    return 0;
+}
+int thread_fn3(void *data)
+{
+    char buff[100];
+    memset(buff, 0, sizeof(buff));
+    lseek(fd, 0, SEEK_SET);
+    int n;
+    printf("In child process, file content is \n");
+    while ((n = read(fd, buff, sizeof(buff))) > 0)
+    {
+        for(int i = 0; i < sizeof(buff); i++){
+            printf("%c", buff[i]);
+        }
+        memset(buff, 0, sizeof(buff));
+    }
+    char string[] = "child process test \n";
+    write(fd, string, sizeof(string));
+    return 0;
+}
+int main(int argc, char **argv)
+{
+    pid_t pid;
+    size_t stack_size = 10240;
+    void *stack = malloc(stack_size);
+    char buff[1024];
+    char string[] = "father process test \n";
+    fd = open("test.txt", O_RDWR | O_CREAT | O_TRUNC, 0655);
+    write(fd, string, sizeof(string));
+    pid = clone(thread_fn3, stack + stack_size, CLONE_FS, 0);
+
+
+    if(pid < 0){
+        exit(EXIT_FAILURE);
+    } else {
+        sleep(1);
+        char buff[100];
+        memset(buff, 0, sizeof(buff));
+        lseek(fd, 0, SEEK_SET);
+        int n;
+        printf("After clone, file content is \n");
+        while ((n = read(fd, buff, sizeof(buff))) > 0)
+        {
+            // printf("%s\n", buff);
+            for(int i = 0; i < sizeof(buff); i++){
+                printf("%c", buff[i]);
+            }
+            memset(buff, 0, sizeof(buff));
+        }
+
+    }
+    close(fd);
+    exit(EXIT_SUCCESS);
+}
+
+
+this is line 1:
+#  58
+define  80
+error in line 1:
+GNU_SOURCE  81
+
+
+this is line 2:
+#  58
+include  82
+<  49
+sched  83
+.  59
+h  84
+>  57
+
+
+this is line 3:
+#  58
+include  82
+<  49
+signal  85
+.  59
+h  84
+>  57
+
+
+this is line 4:
+#  58
+include  82
+<  49
+stdio  86
+.  59
+h  84
+>  57
+
+
+this is line 5:
+#  58
+include  82
+<  49
+stdlib  87
+.  59
+h  84
+>  57
+
+
+this is line 6:
+#  58
+include  82
+<  49
+unistd  88
+.  59
+h  84
+>  57
+
+
+this is line 7:
+#  58
+include  82
+<  49
+malloc  89
+.  59
+h  84
+>  57
+
+
+this is line 8:
+#  58
+include  82
+<  49
+sys  90
+annotation:  types.h>
+
+
+this is line 9:
+#  58
+include  82
+<  49
+sys  90
+annotation:  wait.h>
+
+
+this is line 10:
+#  58
+include  82
+<  49
+string  91
+.  59
+h  84
+>  57
+
+
+this is line 11:
+#  58
+include  82
+<  49
+fcntl  92
+.  59
+h  84
+>  57
+
+
+this is line 12:
+
+
+this is line 13:
+int  17
+param  93
+=  40
+0  110
+;  44
+
+
+this is line 14:
+int  17
+fd  94
+;  44
+
+
+this is line 15:
+int  17
+thread_fn1  95
+(  45
+void  29
+*  42
+data  96
+)  46
+
+
+this is line 16:
+{  47
+
+
+this is line 17:
+chdir  97
+(  45
+"/home/wmc"  98
+)  46
+;  44
+
+
+this is line 18:
+char  4
+buff  100
+[  55
+1024  111
+]  56
+;  44
+
+
+this is line 19:
+getcwd  101
+(  45
+buff  100
+,  53
+sizeof  24
+(  45
+buff  100
+)  46
+)  46
+;  44
+
+
+this is line 20:
+printf  102
+(  45
+"In child process cwd is %s\n"  103
+,  53
+buff  100
+)  46
+;  44
+
+
+this is line 21:
+}  48
+
+
+this is line 22:
+int  17
+thread_fn2  106
+(  45
+void  29
+*  42
+data  96
+)  46
+
+
+this is line 23:
+{  47
+
+
+this is line 24:
+param  93
+++  66
+;  44
+
+
+this is line 25:
+printf  102
+(  45
+"In child process param is %d\n"  107
+,  53
+param  93
+)  46
+;  44
+
+
+this is line 26:
+return  20
+0  110
+;  44
+
+
+this is line 27:
+}  48
+
+
+this is line 28:
+int  17
+thread_fn3  0
+(  45
+void  29
+*  42
+data  96
+)  46
+
+
+this is line 29:
+{  47
+
+
+this is line 30:
+char  4
+buff  100
+[  55
+100  112
+]  56
+;  44
+
+
+this is line 31:
+memset  0
+(  45
+buff  100
+,  53
+0  110
+,  53
+sizeof  24
+(  45
+buff  100
+)  46
+)  46
+;  44
+
+
+this is line 32:
+lseek  0
+(  45
+fd  94
+,  53
+0  110
+,  53
+SEEK_SET  0
+)  46
+;  44
+
+
+this is line 33:
+int  17
+n  0
+;  44
+
+
+this is line 34:
+printf  102
+(  45
+"In child process, file content is \n"  0
+)  46
+;  44
+
+
+this is line 35:
+while  0
+(  45
+(  45
+n  0
+=  40
+read  0
+(  45
+fd  94
+,  53
+buff  100
+,  53
+sizeof  24
+(  45
+buff  100
+)  46
+)  46
+)  46
+>  57
+0  110
+)  46
+
+
+this is line 36:
+{  47
+
+
+this is line 37:
+for  14
+(  45
+int  17
+i  0
+=  40
+0  110
+;  44
+i  0
+<  49
+sizeof  24
+(  45
+buff  100
+)  46
+;  44
+i  0
+++  66
+)  46
+{  47
+
+
+this is line 38:
+printf  102
+(  45
+"%c"  0
+,  53
+buff  100
+[  55
+i  0
+]  56
+)  46
+;  44
+
+
+this is line 39:
+}  48
+
+
+this is line 40:
+memset  0
+(  45
+buff  100
+,  53
+0  110
+,  53
+sizeof  24
+(  45
+buff  100
+)  46
+)  46
+;  44
+
+
+this is line 41:
+}  48
+
+
+this is line 42:
+char  4
+string  91
+[  55
+]  56
+=  40
+"child process test \n"  0
+;  44
+
+
+this is line 43:
+write  0
+(  45
+fd  94
+,  53
+string  91
+,  53
+sizeof  24
+(  45
+string  91
+)  46
+)  46
+;  44
+
+
+this is line 44:
+return  20
+0  110
+;  44
+
+
+this is line 45:
+}  48
+
+
+this is line 46:
+int  17
+main  0
+(  45
+int  17
+argc  0
+,  53
+char  4
+**  43
+argv  0
+)  46
+
+
+this is line 47:
+{  47
+
+
+this is line 48:
+pid_t  0
+pid  0
+;  44
+
+
+this is line 49:
+size_t  0
+stack_size  0
+=  40
+10240  113
+;  44
+
+
+this is line 50:
+void  29
+*  42
+stack  0
+=  40
+malloc  89
+(  45
+stack_size  0
+)  46
+;  44
+
+
+this is line 51:
+char  4
+buff  100
+[  55
+1024  111
+]  56
+;  44
+
+
+this is line 52:
+char  4
+string  91
+[  55
+]  56
+=  40
+"father process test \n"  0
+;  44
+
+
+this is line 53:
+fd  94
+=  40
+open  0
+(  45
+"test.txt"  0
+,  53
+O_RDWR  0
+error in line 53:
+O_CREAT  0
+error in line 53:
+O_TRUNC  0
+,  53
+0655  114
+)  46
+;  44
+
+
+this is line 54:
+write  0
+(  45
+fd  94
+,  53
+string  91
+,  53
+sizeof  24
+(  45
+string  91
+)  46
+)  46
+;  44
+
+
+this is line 55:
+pid  0
+=  40
+clone  0
+(  45
+thread_fn3  0
+,  53
+stack  0
++  41
+stack_size  0
+,  53
+CLONE_FS  0
+,  53
+0  110
+)  46
+;  44
+
+
+this is line 56:
+
+
+this is line 57:
+
+
+this is line 58:
+if  16
+(  45
+pid  0
+<  49
+0  110
+)  46
+{  47
+
+
+this is line 59:
+exit  0
+(  45
+EXIT_FAILURE  0
+)  46
+;  44
+
+
+this is line 60:
+}  48
+else  10
+{  47
+
+
+this is line 61:
+sleep  0
+(  45
+1  115
+)  46
+;  44
+
+
+this is line 62:
+char  4
+buff  100
+[  55
+100  112
+]  56
+;  44
+
+
+this is line 63:
+memset  0
+(  45
+buff  100
+,  53
+0  110
+,  53
+sizeof  24
+(  45
+buff  100
+)  46
+)  46
+;  44
+
+
+this is line 64:
+lseek  0
+(  45
+fd  94
+,  53
+0  110
+,  53
+SEEK_SET  0
+)  46
+;  44
+
+
+this is line 65:
+int  17
+n  0
+;  44
+
+
+this is line 66:
+printf  102
+(  45
+"After clone, file content is \n"  0
+)  46
+;  44
+
+
+this is line 67:
+while  0
+(  45
+(  45
+n  0
+=  40
+read  0
+(  45
+fd  94
+,  53
+buff  100
+,  53
+sizeof  24
+(  45
+buff  100
+)  46
+)  46
+)  46
+>  57
+0  110
+)  46
+
+
+this is line 68:
+{  47
+
+
+this is line 69:
+annotation:  // printf("%s\n", buff);
+
+
+this is line 70:
+for  14
+(  45
+int  17
+i  0
+=  40
+0  110
+;  44
+i  0
+<  49
+sizeof  24
+(  45
+buff  100
+)  46
+;  44
+i  0
+++  66
+)  46
+{  47
+
+
+this is line 71:
+printf  102
+(  45
+"%c"  0
+,  53
+buff  100
+[  55
+i  0
+]  56
+)  46
+;  44
+
+
+this is line 72:
+}  48
+
+
+this is line 73:
+memset  0
+(  45
+buff  100
+,  53
+0  110
+,  53
+sizeof  24
+(  45
+buff  100
+)  46
+)  46
+;  44
+
+
+this is line 74:
+}  48
+
+
+this is line 75:
+
+
+this is line 76:
+}  48
+
+
+this is line 77:
+close  0
+(  45
+fd  94
+)  46
+;  44
+
+
+this is line 78:
+exit  0
+(  45
+EXIT_SUCCESS  0
+)  46
+;  44
+
+
+this is line 79:
+}  48
+
+
+this is line 80:
+
+this is statistics:
+word   count
+
+
+char    7
+else    1
+for    2
+if    1
+int    11
+return    2
+sizeof    11
+void    4
+=    11
++    1
+*    4
+**    1
+;    42
+(    47
+)    47
+{    10
+}    10
+<    13
+,    31
+[    8
+]    8
+>    10
+#    11
+.    8
+++    3
+define    1
+GNU_SOURCEinclude    1
+include    10
+sched    1
+h    8
+signal    1
+stdio    1
+stdlib    1
+unistd    1
+malloc    2
+sys    2
+string    7
+fcntl    1
+param    3
+fd    9
+thread_fn1data    1
+data    3
+chdir    1
+"/home/wmc"    1
+buff    23
+getcwd    1
+printf    6
+"In child process cwd is %s\n"thread_fn2"In child process param is %d\?    1
+thread_fn2"In child process param is %d\?    1
+"In child process param is %d\?    1
+0    15
+1024    2
+100    2
+10240    1
+655    1
+1    1
+total:414
+C:\Users\25832\source\repos\compiler_by_stphenyuan\Debug\compiler_by_stphenyuan.exe (进程 22316)已退出，代码为 0。
+要在调试停止时自动关闭控制台，请启用“工具”->“选项”->“调试”->“调试停止时自动关闭控制台”。
+按任意键关闭此窗口. . .

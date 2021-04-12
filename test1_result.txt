@@ -1,0 +1,380 @@
+this is test.txt:
+x = 1xhafkj
+double ppp = 1.20;
+#include <stdio.h>
+#include <time.h>
+#include <math.h>
+clock_t  start, stop;  /* clock_t */
+double  duration;      /* */
+#define MAXN 10        /*  */
+//666
+double f( int n, double a[], double x );
+
+int main ()
+{       /*  */
+        int i;
+        double a[MAXN]; /*  */
+        double ppp = 1.30;
+        for ( i=0; i<MAXN; i++ ) a[i] = (double)i;
+        /* f(x)a[] */
+
+        start = clock(); /* */
+        for ( i=0; i<MAXK; i++ ) /* */
+                f(MAXN-1, a, 1.1);
+        stop = clock(); /*  */
+        duration = ((double)(stop - start))/CLK_TCK/MAXK;
+        /*  */
+
+        printf("ticks = %f\n", (double)(stop - start));
+        printf("duration= %6.2e\n", duration);
+
+        return 0;
+}
+/* #include "1-4.h" */
+/* #include "1-5.h" */
+
+
+this is line 1:
+x  80
+=  40
+1  111
+xhafkj  81
+
+
+this is line 2:
+double  9
+ppp  82
+=  40
+1.20  160
+;  44
+
+
+this is line 3:
+#  58
+include  83
+<  49
+stdio  84
+.  59
+h  85
+>  57
+
+
+this is line 4:
+#  58
+include  83
+<  49
+time  86
+.  59
+h  85
+>  57
+
+
+this is line 5:
+#  58
+include  83
+<  49
+math  87
+.  59
+h  85
+>  57
+
+
+this is line 6:
+clock_t  88
+start  89
+,  53
+stop  90
+;  44
+annotation:  /* clock_t */
+
+
+this is line 7:
+double  9
+duration  91
+;  44
+annotation:  /* */
+
+
+this is line 8:
+#  58
+define  92
+MAXN  93
+10  112
+annotation:  /*  */
+
+
+this is line 9:
+annotation:  //666
+
+
+this is line 10:
+double  9
+f  94
+(  45
+int  17
+n  95
+,  53
+double  9
+a  96
+[  55
+]  56
+,  53
+double  9
+x  80
+)  46
+;  44
+
+
+this is line 11:
+
+
+this is line 12:
+int  17
+main  97
+(  45
+)  46
+
+
+this is line 13:
+{  47
+annotation:  /*  */
+
+
+this is line 14:
+int  17
+i  98
+;  44
+
+
+this is line 15:
+double  9
+a  96
+[  55
+MAXN  93
+]  56
+;  44
+annotation:  /*  */
+
+
+this is line 16:
+double  9
+ppp  82
+=  40
+1.30  161
+;  44
+
+
+this is line 17:
+for  14
+(  45
+i  98
+=  40
+0  110
+;  44
+i  98
+<  49
+MAXN  93
+;  44
+i  98
+++  66
+)  46
+a  96
+[  55
+i  98
+]  56
+=  40
+(  45
+double  9
+)  46
+i  98
+;  44
+
+
+this is line 18:
+annotation:  /* f(x)a[] */
+
+
+this is line 19:
+
+
+this is line 20:
+start  89
+=  40
+clock  99
+(  45
+)  46
+;  44
+annotation:  /* */
+
+
+this is line 21:
+for  14
+(  45
+i  98
+=  40
+0  110
+;  44
+i  98
+<  49
+MAXK  100
+;  44
+i  98
+++  66
+)  46
+annotation:  /* */
+
+
+this is line 22:
+f  94
+(  45
+MAXN  93
+-  60
+1  111
+,  53
+a  96
+,  53
+1.1  162
+)  46
+;  44
+
+
+this is line 23:
+stop  90
+=  40
+clock  99
+(  45
+)  46
+;  44
+annotation:  /*  */
+
+
+this is line 24:
+duration  91
+=  40
+(  45
+(  45
+double  9
+)  46
+(  45
+stop  90
+-  60
+start  89
+)  46
+)  46
+annotation:  CLK_TCK/MAXK;
+
+
+this is line 25:
+annotation:  /*  */
+
+
+this is line 26:
+
+
+this is line 27:
+printf  101
+(  45
+"ticks = %f\n"  102
+,  53
+(  45
+double  9
+)  46
+(  45
+stop  90
+-  60
+start  89
+)  46
+)  46
+;  44
+
+
+this is line 28:
+printf  101
+(  45
+"duration= %6.2e\n"  104
+,  53
+duration  91
+)  46
+;  44
+
+
+this is line 29:
+
+
+this is line 30:
+return  20
+0  110
+;  44
+
+
+this is line 31:
+}  48
+
+
+this is line 32:
+annotation:  /* #include "1-4.h" */
+
+
+this is line 33:
+annotation:  /* #include "1-5.h" */
+
+
+this is line 34:
+
+this is statistics:
+word   count
+
+
+double    10
+for    2
+int    3
+return    1
+=    9
+;    18
+(    15
+)    15
+{    1
+}    1
+<    5
+,    7
+[    3
+]    3
+>    3
+#    4
+.    3
+-    3
+++    2
+x    2
+xhafkj    1
+ppp    2
+include    3
+stdio    1
+h    3
+time    1
+math    1
+clock_t    1
+start    4
+stop    4
+duration    3
+define    1
+MAXN    4
+f    2
+n    1
+a    4
+main    1
+i    9
+clock    2
+MAXK    1
+printf    2
+"ticks = %f\n"    1
+"duration= %6.2e\n"    1
+0    3
+1    2
+10    1
+1.200000    1
+1.300000    1
+1.100000    1
+total:172
+C:\Users\25832\source\repos\compiler_by_stphenyuan\Debug\compiler_by_stphenyuan.exe (进程 13640)已退出，代码为 0。
+要在调试停止时自动关闭控制台，请启用“工具”->“选项”->“调试”->“调试停止时自动关闭控制台”。
+按任意键关闭此窗口. . .
